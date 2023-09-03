@@ -1,8 +1,24 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./database/payments.db');
+// db.js
 
-db.serialize(() => {
-  // Create tables or other initial setup tasks here
-});
+const sqlite3 = require('sqlite3');
+const { open } = require('sqlite');
 
-module.exports = db;
+let db;
+
+async function openDb() {
+    return open({
+        filename: './scale10x.db',
+        driver: sqlite3.Database
+    });
+}
+
+async function getDb() {
+    if (!db) {
+        db = await openDb();
+    }
+    return db;
+}
+
+module.exports = {
+    getDb
+};
