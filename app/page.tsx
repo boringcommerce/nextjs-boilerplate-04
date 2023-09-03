@@ -1,15 +1,13 @@
 import React from 'react';
-import { useClient } from 'react';
-import CustomerForm from './CustomerForm.client';
+import Link from 'next/link';
 
-function Home() {
-    useClient();
-    return (
-        <div>
-            <h1>Welcome to the Custom Checkout</h1>
-            <CustomerForm />
-        </div>
-    );
-}
+const Home: React.FC = () => {
+  return (
+    <div>
+      <h1>Welcome to the Custom Checkout</h1>
+      <Link href="/CustomerForm">Go to Customer Form</Link>
+    </div>
+  );
+};
 
 export default Home;
