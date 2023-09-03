@@ -1,70 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useClient } from 'react';
+import CustomerForm from './CustomerForm';
 
-function CustomerForm() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        address: '',
-        phoneNumber: ''
-    });
+function Page() {
+  useClient(); // This tells Next.js that this is a client-side component
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
-        console.log(formData);
-    };
-
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    name="firstName" 
-                    value={formData.firstName} 
-                    onChange={handleChange} 
-                    placeholder="First Name" 
-                />
-                <input 
-                    type="text" 
-                    name="lastName" 
-                    value={formData.lastName} 
-                    onChange={handleChange} 
-                    placeholder="Last Name" 
-                />
-                <input 
-                    type="email" 
-                    name="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    placeholder="Email" 
-                />
-                <input 
-                    type="text" 
-                    name="address" 
-                    value={formData.address} 
-                    onChange={handleChange} 
-                    placeholder="Address" 
-                />
-                <input 
-                    type="text" 
-                    name="phoneNumber" 
-                    value={formData.phoneNumber} 
-                    onChange={handleChange} 
-                    placeholder="Phone Number" 
-                />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Welcome to the Custom Checkout</h1>
+      <CustomerForm />
+      {/* ... any other components or content you want to include */}
+    </div>
+  );
 }
 
-export default React.unstable_useClient(CustomerForm);
+export default Page;
