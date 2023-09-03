@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const CustomerForm = dynamic(() => import('../pages/CustomerForm.client'), {
+const CustomerForm = dynamic(() => import('./CustomerForm.client'), {
   loading: () => <p>Loading...</p>,
   ssr: false
 });
